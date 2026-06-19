@@ -24,6 +24,8 @@ intentionally removed. Do not add them back.
 - `README.md` — fully updated documentation
 - `CONTEXT.md` — project overview and remaining work items
 - `DECISIONS.md` — detailed log of every change and rationale
+- `REVIEW_FINDINGS.md` — 🔎 captured-for-review items (doc review + code scan) and a
+  SMAPI modernization assessment. NOT yet actioned; review/prioritize before any work.
 
 ---
 
