@@ -13,7 +13,7 @@
 
   This revision is a comprehensive update to the module. Cluster and MPIO
   support have been removed; the module now manages local storage only.
-  The module has been reduced from 1,835 to 1,132 lines (-38%).
+  The module has been reduced from 1,835 to 1,242 lines (-32%).
 
   --------------------------------------------------------------------------------
   BUG FIXES
@@ -101,7 +101,7 @@
   STRING TABLE
   --------------------------------------------------------------------------------
 
-    - $SCStringTable reduced from 47 entries to 20. Removed entries covered
+    - $SCStringTable reduced from 47 entries to 22. Removed entries covered
       functionality that no longer exists in the module, or were never referenced
       anywhere in the original codebase.
     - Typos corrected in remaining entries.

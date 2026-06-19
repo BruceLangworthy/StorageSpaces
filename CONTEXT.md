@@ -14,8 +14,7 @@ project so work can be resumed on another machine with Claude Code.
 
 | File | Description |
 |------|-------------|
-| `StorageSpaces.psm1` | **Original, unmodified** module — preserved as reference |
-| `StorageSpaces_Revised.psm1` | **Revised module** — all changes applied, ready for review |
+| `StorageSpaces.psm1` | **Revised module** (1,242 lines) — all changes applied, ready for review |
 | `StorageSpaces.psd1` | Module manifest — not yet modified |
 | `Notification_Script.ps1` | Event log notification script — not yet modified |
 | `README.md` | Fully rewritten documentation |
@@ -26,13 +25,9 @@ project so work can be resumed on another machine with Claude Code.
 ## Project Status
 
 The revision is **complete and ready for final review**. All changes have been
-applied to `StorageSpaces_Revised.psm1`. The original `StorageSpaces.psm1` has
-not been touched.
-
-When satisfied with the revision, replace the original:
-```powershell
-Copy-Item StorageSpaces_Revised.psm1 StorageSpaces.psm1
-```
+consolidated directly into `StorageSpaces.psm1` (1,242 lines). The pre-revision
+original (1,835 lines) is no longer retained on disk; recover it from git history
+if a comparison is needed.
 
 ## What Was Done
 
@@ -45,7 +40,8 @@ A comprehensive revision of the module covering:
 2. **MPIO support removed** — three MPIO cmdlets and the `CheckForServerSKU`
    utility function (which had no remaining callers) were removed.
 
-3. **Bug fixes** — ten bugs identified and fixed across multiple functions.
+3. **Bug fixes** — fourteen bugs identified and fixed across multiple functions
+   (enumerated as items 2.1–2.14 in `DECISIONS.md`).
 
 4. **Deprecated APIs updated** — all `gwmi`/`Get-WmiObject` replaced with
    `Get-CimInstance`; scheduled job cmdlets replaced with scheduled task cmdlets;
@@ -54,7 +50,7 @@ A comprehensive revision of the module covering:
 5. **Code quality improvements** — `[PSCustomObject]` refactor, trailing
    semicolons removed, aliases replaced, `Export-ModuleMember` consolidated.
 
-6. **String table cleaned** — reduced from 47 entries to 20; 27 entries removed
+6. **String table cleaned** — reduced from 47 entries to 22; 25 entries removed
    (cluster-only, MPIO-only, and entries that were never referenced).
 
 7. **Comments overhauled** — stale/inaccurate comments removed or corrected;
@@ -67,15 +63,17 @@ A comprehensive revision of the module covering:
 
 | | Lines |
 |---|---|
-| Original `StorageSpaces.psm1` | 1,835 |
-| Revised `StorageSpaces_Revised.psm1` | 1,242 |
+| Pre-revision original | 1,835 |
+| Revised (now `StorageSpaces.psm1`) | 1,242 |
 | Reduction | 593 lines (32%) |
 
 ## Remaining Work / Known Items
 
-- `StorageSpaces.psd1` — the module manifest has not been updated. It should be
-  reviewed to remove the three exported MPIO function names
-  and update the version number, supported PS version, and description.
+- `StorageSpaces.psd1` — the module manifest has not been updated. It currently
+  sets `FunctionsToExport = '*'` (a wildcard — no function names are listed, so
+  there are no MPIO names to remove). It should be updated to enumerate the 15
+  public cmdlets explicitly and to refresh the version number, supported PS
+  version, description, and the deprecated `ModuleToProcess` key (→ `RootModule`).
 
 - `Notification_Script.ps1` — not reviewed in this session. It powers
   `New-StorageSpacesEventLog` and may reference deprecated APIs or have its own

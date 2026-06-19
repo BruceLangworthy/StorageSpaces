@@ -1,7 +1,7 @@
 # StorageSpaces Module — Decisions & Findings Log
 
-Full record of every change applied to `StorageSpaces_Revised.psm1`, including
-the rationale. Use this to understand why any specific change was made.
+Full record of every change applied to the revised module (now `StorageSpaces.psm1`),
+including the rationale. Use this to understand why any specific change was made.
 
 ---
 
@@ -204,7 +204,7 @@ which is more idiomatic for local calls and avoids unnecessary overhead.
 
 ## 5. String Table Changes
 
-`$SCStringTable` reduced from 47 entries to 20.
+`$SCStringTable` reduced from 47 entries to 22.
 
 ### Removed — Cluster-only (8)
 `RSDNotObtained`, `NullPoolOwnerInfo`, `OnNodeNull`, `ProvisioningTypeClustered`,
